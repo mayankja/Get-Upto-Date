@@ -7,6 +7,16 @@
             <h5 class="card-title"><%= news[:name] %></h5>
             <p class="card-text"><%= news[:description] %></p>
             <p class="card-text"><small class="text-muted"><a href=<%= news[:url]%>>Read More...</a></small></p>
+            <%= form_for News.new, method: :post do %>
+              <%= hidden_field_tag :title, news["name"] %>
+              <%= hidden_field_tag :description, news["description"] %>
+              <%= hidden_field_tag :language, news["language"].join(",") %>
+              <%= hidden_field_tag :url, news["url"] %>
+              <%= hidden_field_tag :slug, news["id"] %>
+              <%= hidden_field_tag :categories, news["category"].join(",") %>
+              <%= hidden_field_tag :countries, news["country"].join(",") %>
+              <%= submit_tag "Read it later.", class: "btn btn-sm btn-outline-secondary" %>
+            <% end %>
           </div>
         </div>
       </div>
