@@ -1,28 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">My News Website</a>
+  <a class="navbar-brand" href="#">Get Upto Date</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Politics</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sports</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Entertainment</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Technology</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Health</a>
-      </li>
+      <%= form_tag root_path, method: :get, class: "form-inline" do %>
+        <div class="input-group">
+          <%= select_tag :category, options_for_select(category_options), class: "form-select" %>
+          <%= select_tag :country, options_for_select(country_options), class: "form-select" %>
+          <%= select_tag :language, options_for_select(language_options), class: "form-select" %>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      <% end %>
     </ul>
   </div>
 </nav>

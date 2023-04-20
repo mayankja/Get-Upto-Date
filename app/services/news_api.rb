@@ -6,10 +6,10 @@ class NewsApi
   # This endpoint will fetch news on basic of country, category and language.
   attr_accessor :country, :category, :language
 
-  def initialize(country: 'us', category: 'sports', language: 'en')
-    @country = country
-    @category = category
-    @language = language
+  def initialize(options={})
+    @country = options['country'] || 'us'
+    @category = options['category'] || 'sports'
+    @language = options['language'] || 'en'
   end
 
   def get_news
