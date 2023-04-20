@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 1.5rem;
+}
+
+.nav-link:hover {
+  color: #0062cc;
+}
+
+
+.card {
+  width: 18rem;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #0062cc;
+  border-color: #0062cc;
+}
+
+.btn-primary:hover {
+  background-color: #0052b3;
+  border-color: #0052b3;
+}
