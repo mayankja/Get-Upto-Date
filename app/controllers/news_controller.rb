@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   def index
-    @news = News.all
+    @news ||= News.all
   end
 
   def show
@@ -8,7 +8,7 @@ class NewsController < ApplicationController
   end
 
   def create
-    @news = News.new(attributes)
+    @news = News.new(news_params)
     if @news.save
       flash[:success] = "News is added your watch later list."
       redirect_to news_index_path
@@ -20,14 +20,18 @@ class NewsController < ApplicationController
   private
 
   def filter_params
-    params.permit(:category, :country, :language)
+    @filter_params ||= params.permit(:category, :country, :language)
   end
 
   def news_params
-    params.permit(:title, :description, :url, :slug)
+    @news_params ||= params.permit(:title, :description, :url, :slug)
   end
 
   def attributes
-    news_params.merge(language: params[:language].split(","), categories: params[:categories].split(","), countries: params[:countries].split(","))
+    news_params.merge(
+      language: params[:language].split(","),
+      categories: params[:categories].split(","),
+      countries: params[:countries].split(",")
+    )
   end
 end

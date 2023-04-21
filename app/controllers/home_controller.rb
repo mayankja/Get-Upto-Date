@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @news = NewsApi.new(filter_params).get_news
+    @news ||= NewsApi.new(filter_params).get_news
   end
 
   private

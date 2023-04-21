@@ -13,7 +13,6 @@ class NewsApi
   end
 
   def get_news
-    url = URI.join(endpoint, "?#{URI.encode_www_form(params)}")
     response = perform_http(url)
 
     if response[:status] == 'success'
@@ -46,8 +45,10 @@ class NewsApi
     if valid_json?(response.body)
       JSON.parse(response.body).with_indifferent_access
     else
-      raise "Unexpected response from news api."
+      { status: 'error', message: 'Unexpected response from news api.' }
     end
+  rescue StandardError => e
+    { status: 'error', message: e.message }
   end
 
   def params
@@ -56,6 +57,10 @@ class NewsApi
       country: country,
       language: language
     }
+  end
+
+  def url
+    URI::HTTPS.build(host: ENV['RAPID_API_HOST'], path: '/sources', query: URI.encode_www_form(params))
   end
 
   def endpoint
