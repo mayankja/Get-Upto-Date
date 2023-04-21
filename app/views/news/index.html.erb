@@ -4,9 +4,16 @@
       <div class="col-md-4">
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title"><%= news[:title] %></h5>
-            <p class="card-text"><%= news[:description] %></p>
-            <p class="card-text"><small class="text-muted"><a href=<%= news[:url]%>>Read More...</a></small></p>
+            <h5 class="card-title"><%= news.title %></h5>
+            <p class="card-text"><%= news.description %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                <a href=<%= news.url%>>Read More...</a>
+              </small>
+              <small class="text-muted">
+                <%= link_to "Show", news_path(news), class: "btn btn-sm btn-outline-secondary"%>
+              </small>
+            </p>
           </div>
         </div>
       </div>
